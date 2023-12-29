@@ -1,8 +1,8 @@
 package com.parrot.chengcongping.parrot.school.daily.service.controller;
 
-import com.parrot.chengcongping.parrot.school.daily.service.DateFormat;
 import com.parrot.chengcongping.parrot.school.daily.service.entity.UserInfoEntity;
 import com.parrot.chengcongping.parrot.school.daily.service.services.UserService;
+import com.parrot.chengcongping.parrot.school.daily.service.utils.DateFormatUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class UserController {
 
     @PostMapping("register")
     public UserInfoEntity registerUser(UserInfoEntity userInfo){
-        var date = new SimpleDateFormat(DateFormat.DATE_TIME.getFormat()).format(new Date());
+        var date = new SimpleDateFormat(DateFormatUtil.DATE_TIME.getFormat()).format(new Date());
         userInfo.setCreateTime(date);
         userInfo.setUpdateTime(date);
         return userService.registerUser(userInfo);

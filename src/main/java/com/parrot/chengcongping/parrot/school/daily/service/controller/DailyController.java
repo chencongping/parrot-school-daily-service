@@ -1,8 +1,8 @@
 package com.parrot.chengcongping.parrot.school.daily.service.controller;
 
-import com.parrot.chengcongping.parrot.school.daily.service.DateFormat;
 import com.parrot.chengcongping.parrot.school.daily.service.entity.DailyInEntity;
 import com.parrot.chengcongping.parrot.school.daily.service.services.DailyService;
+import com.parrot.chengcongping.parrot.school.daily.service.utils.DateFormatUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +22,7 @@ public class DailyController {
 
     @PostMapping("save")
     public String save(@RequestBody DailyInEntity form){
-        var date = new SimpleDateFormat(DateFormat.DATE_TIME.getFormat()).format(new Date());
+        var date = new SimpleDateFormat(DateFormatUtil.DATE_TIME.getFormat()).format(new Date());
         form.setCreateTime(date);
         form.setUpdateTime(date);
         form.setUserId("chenaiping");

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/{version}/css/bootstrap.min.css(version=${bootstrapVersion})}">
+<!--  <link rel="stylesheet" href="https://v5.bootcss.com/docs/5.3/dist/css/bootstrap.min.css">-->
+<!--  <script src="https://v5.bootcss.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>-->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+<!--    Navbar-->
+    <a class="navbar-brand" href="#">首页</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+<!--    Home-->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal" href="#">登录</a>
+        <a class="nav-link" href="#">注册</a>
+        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#dailyModal" href="#">打卡</a>
+        <a class="nav-link" href="#">查询打卡信息</a>
+        <a class="nav-link" href="#">查询用户</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- 模态框 -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">注册/登录</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 表单 -->
+                <form>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">用户名</label>
+                        <input type="text" class="form-control" id="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">密码</label>
+                        <input type="password" class="form-control" id="password" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 打卡模态框 -->
+<div class="modal fade" id="dailyModal" tabindex="-1" aria-labelledby="dailyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dailyModalLabel">打卡</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 表单 -->
+                <form>
+                    <div class="mb-3">
+                        <label for="businessDate" class="form-label">日期</label>
+                        <input type="date" class="form-control" id="businessDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tea" class="form-label">喝茶量和次数（ML）</label>
+                        <input type="text" class="form-control" id="tea" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="longRun" class="form-label">长跑总里程（公里/小时）</label>
+                        <input type="text" class="form-control" id="longRun" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="shortRun" class="form-label">短跑（最佳成绩s/次数）</label>
+                        <input type="text" class="form-control" id="shortRun" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="words" class="form-label">背单词数量（个）</label>
+                        <input type="text" class="form-control" id="words" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="questions" class="form-label">做题数量（道）</label>
+                        <input type="text" class="form-control" id="questions" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="praise" class="form-label">需要表扬的方面</label>
+                        <input type="text" class="form-control" id="praise" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="improvement" class="form-label">需要改进的方面</label>
+                        <input type="text" class="form-control" id="improvement" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="other" class="form-label">其他</label>
+                        <input type="text" class="form-control" id="other" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id = "submitDaily">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="embed-responsive embed-responsive-4by3">-->
+<!--    <iframe class="embed-responsive-item" src="http://localhost:8080/dashboard/all"></iframe>-->
+<!--</div>-->
+<div class="container mt-4">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">日期</th>
+            <th scope="col">喝茶量和次数（ML）</th>
+            <th scope="col">长跑总里程（公里/小时）</th>
+            <th scope="col">短跑（最佳成绩s/次数）</th>
+            <th scope="col">背单词数量（个）</th>
+            <th scope="col">背课文列表</th>
+            <th scope="col">做题数量（道）</th>
+            <th scope="col">需要表扬的方面</th>
+            <th scope="col">需要改进的方面</th>
+            <th scope="col">其他</th>
+            <th scope="col">提交时间</th>
+            <th scope="col">更新时间</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+        <tr th:each="entity : ${entities}">
+            <!--                <td style="width: 200px; white-space: nowrap;" th:text="${entity.businessDate}"></td>-->
+            <td th:text="${entity.businessDate}"></td>
+            <td th:text="${entity.tea}"></td>
+            <td th:text="${entity.longRun}"></td>
+            <td th:text="${entity.shortRun}"></td>
+            <td th:text="${entity.words}"></td>
+            <td th:text="${entity.texts}"></td>
+            <td th:text="${entity.questions}"></td>
+            <td th:text="${entity.praise}"></td>
+            <td th:text="${entity.improvement}"></td>
+            <td th:text="${entity.other}"></td>
+            <td th:text="${entity.createTime}"></td>
+            <td th:text="${entity.updateTime}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--<div class="embed-responsive embed-responsive-16by9">-->
+<!--    <iframe class="embed-responsive-item" style="width:500px; height:500px;" src="https://mbd.baidu.com/newspage/data/videolanding?nid=sv_11891693485790471232&sourceFrom=pc_feedlist" allowfullscreen></iframe>-->
+<!--</div>-->
+<script th:src="@{/webjars/jquery/{version}/jquery.min.js(version=${jqueryVersion})}"></script>
+<script th:src="@{/webjars/bootstrap/{version}/js/bootstrap.bundle.min.js(version=${bootstrapVersion})}"></script>
+<script src="/js/common.js"></script>
+<script src="/js/index.js"></script>
+<!--<script>-->
+<!--    var $iframe = $("iframe");-->
+<!--    $iframe.each(function () {-->
+<!--        $(this).data("ratio", this.height / this.width)-->
+<!--               .removeAttr("width")-->
+<!--               .removeAttr("height");-->
+<!--    });-->
+
+<!--    $(window).resize(function () {-->
+<!--        $iframe.each(function() {-->
+<!--            var width = $(this).parent().width();-->
+<!--            $(this).width(width).height(width * $(this).data("ratio"));-->
+<!--        });-->
+<!--    }).resize();-->
+
+<!--</script>-->
+</body>
+</html>

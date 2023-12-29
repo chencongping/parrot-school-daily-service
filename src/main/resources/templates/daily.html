@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/{version}/css/bootstrap.min.css(version=${bootstrapVersion})}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>打卡页面</h1>
+        <label for="date">日期</label>
+        <input type="date" class="form-control" id="date">
+        <label for="tea">喝茶量和次数（ML）</label>
+        <input type="number" class="form-control" id="tea" value="0">
+        <label for="longRun">长跑总里程（公里/小时）</label>
+        <input type="number" class="form-control" id="longRun" value="0">
+        <label for="shortRun">短跑（最佳成绩s/次数）</label>
+        <input type="text" class="form-control" id="shortRun" value="0">
+        <label for="words">背单词数量（个）</label>
+        <input type="number" class="form-control" id="words" value="0">
+        <label for="texts">背课文列表</label>
+        <input type="text" class="form-control" id="texts" value="石钟山记">
+        <label for="questions">做题数量（道）</label>
+        <input type="number" class="form-control" id="questions" value="42">
+        <label for="praise">需要表扬的方面</label>
+        <textarea class="form-control" id="praise" rows="3"></textarea>
+        <label for="improvement">需要改进的方面</label>
+        <textarea class="form-control" id="improvement" rows="3"></textarea>
+        <label for="other">其他</label>
+        <textarea class="form-control" id="other"
+                  rows="3">100斤半蹲五十个一组一共六组，腰腹力量一组20个共四组，上肢力量15个一组共4组</textarea>
+        <button class="btn btn-primary" id="submit">提交</button>
+    </div>
+    <script th:src="@{/webjars/jquery/{version}/jquery.min.js(version=${jqueryVersion})}"></script>
+    <script th:src="@{/webjars/bootstrap/{version}/js/bootstrap.bundle.min.js(version=${bootstrapVersion})}"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/daily.js"></script>
+</body>
+</html>

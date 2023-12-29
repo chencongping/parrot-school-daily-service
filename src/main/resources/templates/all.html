@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/{version}/css/bootstrap.min.css(version=${bootstrapVersion})}">
+</head>
+
+<body>
+<div class="container mt-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">日期</th>
+                <th scope="col">喝茶量和次数（ML）</th>
+                <th scope="col">长跑总里程（公里/小时）</th>
+                <th scope="col">短跑（最佳成绩s/次数）</th>
+                <th scope="col">背单词数量（个）</th>
+                <th scope="col">背课文列表</th>
+                <th scope="col">做题数量（道）</th>
+                <th scope="col">需要表扬的方面</th>
+                <th scope="col">需要改进的方面</th>
+                <th scope="col">其他</th>
+                <th scope="col">提交时间</th>
+                <th scope="col">更新时间</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr th:each="entity : ${entities}">
+<!--                <td style="width: 200px; white-space: nowrap;" th:text="${entity.businessDate}"></td>-->
+                <td th:text="${entity.businessDate}"></td>
+                <td th:text="${entity.tea}"></td>
+                <td th:text="${entity.longRun}"></td>
+                <td th:text="${entity.shortRun}"></td>
+                <td th:text="${entity.words}"></td>
+                <td th:text="${entity.texts}"></td>
+                <td th:text="${entity.questions}"></td>
+                <td th:text="${entity.praise}"></td>
+                <td th:text="${entity.improvement}"></td>
+                <td th:text="${entity.other}"></td>
+                <td th:text="${entity.createTime}"></td>
+                <td th:text="${entity.updateTime}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <script th:src="@{/webjars/jquery/{version}/jquery.min.js(version=${jqueryVersion})}"></script>
+    <script th:src="@{/webjars/bootstrap/{version}/js/bootstrap.bundle.min.js(version=${bootstrapVersion})}"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/daily.js"></script>
+</body>
+</html>

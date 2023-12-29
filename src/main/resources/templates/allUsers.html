@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/{version}/css/bootstrap.min.css(version=${bootstrapVersion})}">
+</head>
+
+<body>
+<div class="container mt-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">用户名</th>
+                <th scope="col">昵称</th>
+                <th scope="col">邮箱</th>
+                <th scope="col">创建时间</th>
+                <th scope="col">更新时间</th>
+                <th scope="col">注册号</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr th:each="entity : ${entities}">
+                <td th:text="${entity.userName}"></td>
+                <td th:text="${entity.nickName}"></td>
+                <td th:text="${entity.email}"></td>
+                <td th:text="${entity.createTime}"></td>
+                <td th:text="${entity.updateTime}"></td>
+                <td th:text="${entity.registerId}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script th:src="@{/webjars/jquery/{version}/jquery.min.js(version=${jqueryVersion})}"></script>
+<script th:src="@{/webjars/bootstrap/{version}/js/bootstrap.bundle.min.js(version=${bootstrapVersion})}"></script>
+    <script src="/js/common.js"></script>
+</body>
+</html>
